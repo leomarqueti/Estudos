@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(38, 36, 36);
+}
+
+main {
+    margin: auto;
+}
+
+.principal {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 29vh;
+    color: white;
+    max-width: 510px;
+    width: 100%;
+}
+
+.respostas {
+    font-size: 20px;
+}
+
+button {
+    border: none;
+    width: 132px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: beige;
+}
+
+.botoes {
+    margin-top: 20px;
+}
+
+
+#res {
+    margin-top: 10px;
+}
+
