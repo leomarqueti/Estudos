@@ -1,5 +1,5 @@
 
-listaDePerguntas = [teste,pg1,pg2,pg3,pg4,pg5,pg6,pg7,pg8,pg9,pg10,pg11,pg12,pg13,pg14,pg15,pg16,pg17,pg18,pg19];
+listaDePerguntas = [pg1,pg2,pg3,pg4,pg5,pg6,pg7,pg8,pg9,pg10,pg11,pg12,pg13,pg14,pg15,pg16,pg17,pg18,pg19,eco1,eco2,eco3,eco4,eco5,eco6,eco7,ges1,ges2,ges3,ges4,js1,js2,js3,js4,js5,js6,js7,js8,js9];
 // Criação da função para gerar a pergunta
 
 let pontos = 0;
@@ -121,3 +121,4 @@ function verificarResposta() {
     divPontos.innerHTML = pontos;          
 }
 // Função para verificar a resposta
+

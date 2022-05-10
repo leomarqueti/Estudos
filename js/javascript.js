@@ -1,0 +1,13 @@
+const js1 = new Questionario("Como é escrito o OU logico no javascript?", "||", "&&", "and", "<");
+const js2 = new Questionario("Como é escrito o E logico no javascript?", "&&", "||", "and", "<");
+const js3 = new Questionario("Como é escrito a junção de if e else no JavaScript?", "else if", "elif", "if else", "elseif");
+const js4 = new Questionario(`<h2>Qual alteração no código dela faria com que o número de casas decimais ficasse limitado a uma casa decimal ?</h2> <img src="imagem/10.05.2022_14.51.13_REC.png">`, "console.log(porcentagemCategoria.toFixed(1));", "console.log(porcentagemDecimal);", "console.log(porcentagemCategoria);", "console.log(int(porcentagemCategoria));");
+const js5 = new Questionario(`João está montando um script em Javascript que deve pegar todos os nomes dos produtos de um e-commerce.O HTML da lista é como o abaixo: <img src="imagem/js51.png"> E o script do João é o seguinte: <img src="imagem/js52.png"> Porém o script não funciona como João espera.Quais alternativas abaixo apontam para os possíveis erros do código de João ?`, "João está utilizando a função errada, como ele quer selecionar diversos elementos, ele deve usar a função querySelectorAll().", "João está usando a propriedade .length que está escrito errado, o correto é .lenght.", "João utilizou a propriedade textContent errada, ele poderia simplesmente imprimir o produto[i].", "João esqueceu de colocar o . no seletor de sua função querySelector()");
+const js6 = new Questionario(`Qual dos códigos abaixo altera a cor da letra do parágrafo abaixo para a cor azul ? <img src="imagem/js6.png">`, `paragrafo.style.color = "blue";`, `paragrafo.color = "blue";`, `paragrafo.css.color = "blue";`, `paragrafo.styles.color = "blue";`);
+const js7 = new Questionario(`E se mudarmos de ideia e, em vez da cor do parágrafo, quisermos que o fundo do último exercício seja azul? <img src="imagem/js6.png">`, `paragrafo.style.backgroundColor = "blue";`, `paragrafo.style.background-color = "blue";`, `paragrafo.style.background_color = "blue";`, `paragrafo.style.background_color = "Red";`);
+const js8 = new Questionario("Qual propriedade abaixo nos dá acesso à lista das classes de um HTML selecionado pela função querySelectorAll?", ".classList", ".classArray", ".addClass", ".class");
+const js9 = new Questionario(`Qual dos códigos abaixo implementa uma solução em Javascript para que todos os <h2> da página ganhem a classe "titulo"?`, `titulo.classList.add("titulo");`, `titulo.classList.add(".titulo");`, `titulo.classList.addClass("titulo");`, `titulo.addClass("titulo");`);
+
+
+//const js = new Questionario("", "", "", "", "");
+//const js = new Questionario(``, "", "", "", "");
