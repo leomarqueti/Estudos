@@ -1,0 +1,5 @@
+"qual o seu nome?"
+nome = gets.chomp
+puts "qual a sua idade?"
+idade = gets.chomp
+puts "qual o seu peso?"

@@ -1,13 +1,19 @@
+// Gerador de perguntas e respostas aleatórias
 
-listaDePerguntas = [pg1,pg2,pg3,pg4,pg5,pg6,pg7,pg8,pg9,pg10,pg11,pg12,pg13,pg14,pg15,pg16,pg17,pg18,pg19,eco1,eco2,eco3,eco4,eco5,eco6,eco7,ges1,ges2,ges3,ges4,js1,js2,js3,js4,js5,js6,js7,js8,js9];
-// Criação da função para gerar a pergunta
+listaDePerguntas = [pg1,pg2,pg3,pg4,pg5,pg6,pg7,pg8,pg9,pg10,pg11,pg12,pg13,pg14,pg15,pg16,pg17,pg18,pg19,eco1,eco2,eco3,eco4,eco5,eco6,eco7,eco8,eco9,eco10,eco11,eco12,eco13,eco14,eco15,eco16,eco17,eco18,eco19,eco20,eco21,eco22,,eco23,eco24,eco25,eco26,eco27,eco28,eco29,eco30,eco31,eco32,eco33,eco34,eco35,eco36,eco37,eco38,eco39,eco40,ges1,ges2,ges3,ges4,ges5,ges6,ges7,ges8,ges9,ges10,ges11,ges12,ges13,ges14,ges15,ges16,ges17,ges18,ges19,ges20,ges21,ges22];
+// lista das perguntas
 
-let pontos = 0;
-
-let divPontos = document.querySelector(".pontos")
-divPontos.innerHTML = pontos;
-
+let numeroRandomParaTirarPergunta
 let checkbox1
+
+let pontos = listaDePerguntas.length;
+
+
+function mostrarPontos(){
+    let divPontos = document.querySelector(".pontos")
+    divPontos.innerHTML = pontos;
+}
+// Mostra os pontos
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -17,20 +23,12 @@ function getRandomInt(min, max) {
 // Função para gerar um número aleatório
 
 function mostrarPergunta() {
-
-    let divFundoResposta1 = document.querySelector(".resposta1")
-    let divFundoResposta2 = document.querySelector(".resposta2")
-    let divFundoResposta3 = document.querySelector(".resposta3")
-    let divFundoResposta4 = document.querySelector(".resposta4")
-
-    divFundoResposta1.style.backgroundColor = "transparent"
-    divFundoResposta2.style.backgroundColor = "transparent"
-    divFundoResposta3.style.backgroundColor = "transparent"
-    divFundoResposta4.style.backgroundColor = "transparent"
-
+    mudarCorDoFundoDaResposta("transparent", 0, 1, 2, 3)
+    
     let numeroRandomListaPergunta = getRandomInt(0, listaDePerguntas.length);
-
-    let pergunta = listaDePerguntas[numeroRandomListaPergunta].pergunta;
+    numeroRandomParaTirarPergunta = numeroRandomListaPergunta;
+    
+    
     checkbox1 = listaDePerguntas[numeroRandomListaPergunta].respontaCerta
     let checkbox2 = listaDePerguntas[numeroRandomListaPergunta].resposta2
     let checkbox3 = listaDePerguntas[numeroRandomListaPergunta].resposta3
@@ -38,6 +36,7 @@ function mostrarPergunta() {
 
     listaDeCheckbox = [checkbox1, checkbox2, checkbox3, checkbox4]
 
+    let pergunta = listaDePerguntas[numeroRandomListaPergunta].pergunta;
     document.querySelector(".perguntas").innerHTML = `<h2>`+pergunta+`</h2>`;
 
     while(true){
@@ -62,63 +61,68 @@ function mostrarPergunta() {
         document.querySelector(".resposta4").innerHTML = `<input type="checkbox" class="chek4" value="`+listaDeCheckbox[random4]+`">`+listaDeCheckbox[random4]+`</input>`
         break;
     }
-    divPontos.innerHTML = pontos;
+    mostrarPontos()
 }
-// Função para mostrar a pergunta
+// Função para mostrar a pergunta e as respostas na tela
 
 function verificarResposta() {
     let divResposta1 = document.querySelector(".chek1")
     let divResposta2 = document.querySelector(".chek2")
     let divResposta3 = document.querySelector(".chek3")
     let divResposta4 = document.querySelector(".chek4")
+    console.log(listaDePerguntas.length)
 
+    listaDivResposta = [divResposta1, divResposta2, divResposta3, divResposta4]
+
+    for(let i = 0; i < listaDivResposta.length; i++){
+        if(listaDivResposta[i].checked == true){
+            if(listaDivResposta[i].value == checkbox1){
+                removerPergunta()
+                pontos = listaDePerguntas.length
+                mudarCorDoFundoDaResposta("green", i)
+            }
+            else{
+                adicionarPergunta()
+                pontos = listaDePerguntas.length
+                mudarCorDoFundoDaResposta("red", i)
+            }
+        }    
+    }   
+    mostrarPontos()
+}
+// Função para verificar a resposta
+
+function mudarCorDoFundoDaResposta(cor, div, div2, div3, div4) {
     let divFundoResposta1 = document.querySelector(".resposta1")
     let divFundoResposta2 = document.querySelector(".resposta2")
     let divFundoResposta3 = document.querySelector(".resposta3")
     let divFundoResposta4 = document.querySelector(".resposta4")
 
-    divFundoResposta1.style.backgroundColor = "transparent"
-    divFundoResposta2.style.backgroundColor = "transparent"
-    divFundoResposta3.style.backgroundColor = "transparent"
-    divFundoResposta4.style.backgroundColor = "transparent"
+    listaDivFundo = [divFundoResposta1, divFundoResposta2, divFundoResposta3, divFundoResposta4]
 
-    if(divResposta1.checked){
-        if(divResposta1.value == checkbox1){
-            divFundoResposta1.style.backgroundColor = "green"
-            pontos++
-        }else{
-            divFundoResposta1.style.backgroundColor = "red"
-            pontos--
-        }
-    }else if(divResposta2.checked){
-        if(divResposta2.value == checkbox1){
-            divFundoResposta2.style.backgroundColor = "green"
-            pontos++
-        }
-        else{
-            divFundoResposta2.style.backgroundColor = "red"
-            pontos--
-        }
-    }else if(divResposta3.checked){
-        if(divResposta3.value == checkbox1){
-            divFundoResposta3.style.backgroundColor = "green"
-            pontos++
-        }
-        else{
-            divFundoResposta3.style.backgroundColor = "red"
-            pontos--
-        }
-    }else if(divResposta4.checked){
-        if(divResposta4.value == checkbox1){
-            divFundoResposta4.style.backgroundColor = "green"
-            pontos++
-        }
-        else{
-            divFundoResposta4.style.backgroundColor = "red"
-            pontos--
-        }
-    }
-    divPontos.innerHTML = pontos;          
+    listaDivFundo[div].style.backgroundColor = cor
+    listaDivFundo[div2].style.backgroundColor = cor
+    listaDivFundo[div3].style.backgroundColor = cor
+    listaDivFundo[div4].style.backgroundColor = cor
 }
-// Função para verificar a resposta
+// Função para mudar a cor do fundo da resposta
+
+function removerPergunta(){
+    listaDePerguntas.splice(numeroRandomParaTirarPergunta, 1)
+}
+// Função para remover a pergunta
+
+function adicionarPergunta() {
+    let pergunta = document.querySelector("h2").textContent;
+    let respostaCerta = document.querySelector(".respostaCerta");
+    let resposta2 = document.querySelector(".resposta2");
+    let resposta3 = document.querySelector(".resposta3");
+    let resposta4 = document.querySelector(".resposta4");
+
+    const perguntaRepetidaPorqueUsuarioErrou = new Questionario(pergunta, respostaCerta, resposta2, resposta3, resposta4);
+
+    listaDePerguntas.push(perguntaRepetidaPorqueUsuarioErrou)
+    console.log(listaDePerguntas)
+}
+
 
