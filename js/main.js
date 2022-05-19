@@ -5,9 +5,23 @@ listaDePerguntas = [pg1,pg2,pg3,pg4,pg5,pg6,pg7,pg8,pg9,pg10,pg11,pg12,pg13,pg14
 
 let numeroRandomParaTirarPergunta
 let checkbox1
+let checkbox2
+let checkbox3
+let checkbox4
 
+let acertos = 0
+let erros = 0
 let pontos = listaDePerguntas.length;
 
+function mostrarAcertos(){
+    let divAcertos = document.querySelector(".acertos")
+    divAcertos.innerHTML = acertos;
+}
+
+function mostrarErros(){
+    let divErros = document.querySelector(".erros")
+    divErros.innerHTML = erros;
+}
 
 function mostrarPontos(){
     let divPontos = document.querySelector(".pontos")
@@ -27,12 +41,15 @@ function mostrarPergunta() {
     
     let numeroRandomListaPergunta = getRandomInt(0, listaDePerguntas.length);
     numeroRandomParaTirarPergunta = numeroRandomListaPergunta;
-    
-    
+
+    let numeroRandom1 = getRandomInt(0, listaDePerguntas.length);
+    let numeroRandom2 = getRandomInt(0, listaDePerguntas.length);
+    let numeroRandom3 = getRandomInt(0, listaDePerguntas.length);
+
     checkbox1 = listaDePerguntas[numeroRandomListaPergunta].respontaCerta
-    let checkbox2 = listaDePerguntas[numeroRandomListaPergunta].resposta2
-    let checkbox3 = listaDePerguntas[numeroRandomListaPergunta].resposta3
-    let checkbox4 = listaDePerguntas[numeroRandomListaPergunta].resposta4
+    checkbox2 = listaDePerguntas[numeroRandom1].respontaCerta
+    checkbox3 = listaDePerguntas[numeroRandom2].respontaCerta
+    checkbox4 = listaDePerguntas[numeroRandom3].respontaCerta
 
     listaDeCheckbox = [checkbox1, checkbox2, checkbox3, checkbox4]
 
@@ -62,6 +79,8 @@ function mostrarPergunta() {
         break;
     }
     mostrarPontos()
+    mostrarAcertos()
+    mostrarErros()
 }
 // Função para mostrar a pergunta e as respostas na tela
 
@@ -79,16 +98,20 @@ function verificarResposta() {
             if(listaDivResposta[i].value == checkbox1){
                 removerPergunta()
                 pontos = listaDePerguntas.length
+                acertos++
                 mudarCorDoFundoDaResposta("green", i)
             }
             else{
                 adicionarPergunta()
                 pontos = listaDePerguntas.length
+                erros++
                 mudarCorDoFundoDaResposta("red", i)
             }
         }    
     }   
     mostrarPontos()
+    mostrarAcertos()
+    mostrarErros()
 }
 // Função para verificar a resposta
 
@@ -114,10 +137,10 @@ function removerPergunta(){
 
 function adicionarPergunta() {
     let pergunta = document.querySelector("h2").textContent;
-    let respostaCerta = document.querySelector(".respostaCerta");
-    let resposta2 = document.querySelector(".resposta2");
-    let resposta3 = document.querySelector(".resposta3");
-    let resposta4 = document.querySelector(".resposta4");
+    let respostaCerta = checkbox1;
+    let resposta2 = checkbox2;
+    let resposta3 = checkbox3;
+    let resposta4 = checkbox4;
 
     const perguntaRepetidaPorqueUsuarioErrou = new Questionario(pergunta, respostaCerta, resposta2, resposta3, resposta4);
 

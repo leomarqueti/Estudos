@@ -39,3 +39,30 @@ button:hover {
     margin-top: 10px;
 }
 
+
+.errada {
+    background-color: rgb(228, 23, 23);
+}
+
+.certa {
+    background-color: green;
+}
+
+
+.mapa-mental {
+    width: 600px;
+}
+
+.pontuacao {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.acertos {
+    color: green;
+}
+
+.erros {
+    color: red;
+}
